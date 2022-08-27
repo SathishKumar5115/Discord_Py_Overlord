@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 import json
 
 def get_prefix(client, message):
@@ -46,11 +47,17 @@ async def on_message(msg):
         
     await client.process_commands(msg)
 
-@client.hybrid_command()
+@client.event
+async def setup_hook():
+    await client.tree.sync(guild = discord.Object(id = 1012904780047339531))
+    print(f"Synced slash commands for {client.user}")
+
+@client.hybrid_command(name = "prefix",with_app_command = True)
+@app_commands.guilds(discord.Object(id = 1012904780047339531))
 @commands.cooldown(1,5,commands.BucketType.user)
 @commands.has_permissions(administrator = True)
-async def setprefix(ctx, prefix):
-
+async def setprefix(ctx : commands.Context, prefix):
+ 
   with open("prefixes.json", "r") as f:
     prefixes = json.load(f)
   
