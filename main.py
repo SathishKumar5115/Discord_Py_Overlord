@@ -50,7 +50,6 @@ async def on_message(msg):
 
             await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** for more info.")
         
-
 @client.command()
 @commands.cooldown(1,5,commands.BucketType.user)
 @commands.has_permissions(administrator = True)
@@ -65,7 +64,5 @@ async def setprefix(ctx, prefix):
     json.dump(prefixes,f)
   embed = discord.Embed(title = " Prefix Changed ", description = f"**The prefix for this server was changed to {prefix}**",color = ctx.author.color)
   await ctx.reply(embed=embed)
-
-
 
 client.run('MTAxMjkwMzg4NTU1NzQ4NTYxOQ.Gbqa3z.soBOVvNdhfEcO7IME0BRVfoA1y_1cBZ6_hMkjs')
