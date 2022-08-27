@@ -49,11 +49,10 @@ async def on_message(msg):
 
 @client.event
 async def setup_hook():
-    await client.tree.sync(guild = discord.Object(id = 1012904780047339531))
+    await client.tree.sync()
     print(f"Synced slash commands for {client.user}")
 
 @client.hybrid_command(name = "setprefix",with_app_command = True)
-@app_commands.guilds(discord.Object(id = 1012904780047339531))
 @commands.cooldown(1,5,commands.BucketType.user)
 @commands.has_permissions(administrator = True)
 async def setprefix(ctx : commands.Context, prefix):
