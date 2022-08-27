@@ -2,9 +2,6 @@ import discord
 from discord.ext import commands
 import json
 
-intents = discord.Intents.default()
-intents.message_content = True
-
 def get_prefix(client, message):
 
   with open("prefixes.json", "r") as f:
@@ -12,11 +9,9 @@ def get_prefix(client, message):
 
   return prefixes[str(message.guild.id)]
 
+intents = discord.Intents.default()
+intents.message_content = True
 client = commands.Bot(command_prefix = get_prefix, case_insensitive = True, intents=intents,allowed_mentions = discord.AllowedMentions(everyone = bool))
-
-@client.event
-async def on_ready():
-    print(f'We have logged in as {client.user}')
 
 @client.event
 async def on_guild_join(guild):
@@ -47,10 +42,11 @@ async def on_message(msg):
                 prefixes = json.load(f)
             
             pre = prefixes[str(msg.guild.id)]
-
-            await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** for more info.")
+        await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** for more info.")
         
-@client.command()
+    await client.process_commands(msg)
+
+@client.hybrid_command()
 @commands.cooldown(1,5,commands.BucketType.user)
 @commands.has_permissions(administrator = True)
 async def setprefix(ctx, prefix):
@@ -65,4 +61,5 @@ async def setprefix(ctx, prefix):
   embed = discord.Embed(title = " Prefix Changed ", description = f"**The prefix for this server was changed to {prefix}**",color = ctx.author.color)
   await ctx.reply(embed=embed)
 
-client.run('MTAxMjkwMzg4NTU1NzQ4NTYxOQ.Gbqa3z.soBOVvNdhfEcO7IME0BRVfoA1y_1cBZ6_hMkjs')
+
+client.run('MTAxMjkwMzg4NTU1NzQ4NTYxOQ.Gs6odc.K6psB3Fjig7NXsPVBJkusvdRjH0-EmVE2OIQuY')
