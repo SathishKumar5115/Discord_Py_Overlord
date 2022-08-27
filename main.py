@@ -52,7 +52,7 @@ async def setup_hook():
     await client.tree.sync(guild = discord.Object(id = 1012904780047339531))
     print(f"Synced slash commands for {client.user}")
 
-@client.hybrid_command(name = "prefix",with_app_command = True)
+@client.hybrid_command(name = "setprefix",with_app_command = True)
 @app_commands.guilds(discord.Object(id = 1012904780047339531))
 @commands.cooldown(1,5,commands.BucketType.user)
 @commands.has_permissions(administrator = True)
