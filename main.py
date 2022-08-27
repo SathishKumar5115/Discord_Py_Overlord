@@ -5,9 +5,6 @@ import json
 intents = discord.Intents.default()
 intents.message_content = True
 
-
-
-
 def get_prefix(client, message):
 
   with open("prefixes.json", "r") as f:
@@ -50,9 +47,9 @@ async def on_message(msg):
                 prefixes = json.load(f)
             
             pre = prefixes[str(msg.guild.id)]
-        await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** for more info.")
+
+            await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** for more info.")
         
-    await client.process_commands(msg)
 
 @client.command()
 @commands.cooldown(1,5,commands.BucketType.user)
