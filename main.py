@@ -1,8 +1,6 @@
 import discord
 from discord.ext import commands
 import json
-from dotenv import load_dotenv
-import os
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -69,5 +67,5 @@ async def setprefix(ctx, prefix):
   await ctx.reply(embed=embed)
 
 
-load_dotenv('.env')
-client.run(os.getenv('BOT_TOKEN'))
+
+client.run('MTAxMjkwMzg4NTU1NzQ4NTYxOQ.Gbqa3z.soBOVvNdhfEcO7IME0BRVfoA1y_1cBZ6_hMkjs')
