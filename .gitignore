@@ -5,3 +5,4 @@ prefixes.json
 discord.log
 discord.log
 discord.log
+*.log
