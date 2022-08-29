@@ -105,7 +105,7 @@ class AFK(commands.Cog):
         with open('afk.json', 'w') as f:
             json.dump(afk, f)
 
-    @client.hybrid_command(name = "afk",with_app_command = True)     
+    @client.hybrid_command(name = "afk",description="Set your status as AFK",with_app_command = True)     
     async def afk(self, ctx, *, reason=None):
         with open('afk.json', 'r') as f:
             afk = json.load(f)

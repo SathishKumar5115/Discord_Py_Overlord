@@ -22,7 +22,10 @@ async def load_extensions():
         if filename.endswith(".py"):
             # cut off the .py from the file name
             await client.load_extension(f"cogs.{filename[:-3]}")
-    await client.load_extension('currencysys.money')
+    for filename in os.listdir("./currencysys"):
+        if filename.endswith(".py"):
+            # cut off the .py from the file name
+            await client.load_extension(f"currencysys.{filename[:-3]}")
 
 @client.event
 async def on_guild_join(guild):
@@ -62,7 +65,7 @@ async def setup_hook():
     await client.tree.sync()
     print(f"Synced slash commands for {client.user}")
 
-@client.hybrid_command(name = "setprefix",with_app_command = True)
+@client.hybrid_command(name = "setprefix",description="Change bot prefix for this server",with_app_command = True)
 @commands.cooldown(1,5,commands.BucketType.user)
 @commands.has_permissions(administrator = True)
 async def setprefix(ctx : commands.Context, prefix):

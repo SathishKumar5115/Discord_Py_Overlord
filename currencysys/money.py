@@ -46,7 +46,7 @@ async def update_bank(user,change = 0,mode = "wallet"):
     bal = [users[str(user.id)]["wallet"],users[str(user.id)]["bank"]]
     return bal
 
-@client.hybrid_command(name = "bal",with_app_command = True)
+@client.hybrid_command(name = "balance", description="Check your balance",with_app_command = True)
 @commands.cooldown(1,3,commands.BucketType.user)
 async def balance(ctx,*,member:discord.Member = None):
     if member == None:
