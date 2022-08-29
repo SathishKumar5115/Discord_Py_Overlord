@@ -1,2 +1,3 @@
 .env
 prefixes.json
+*.pyc
