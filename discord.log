@@ -1,6 +1,14 @@
-[2022-08-29 13:28:23] [INFO    ] discord.client: logging in using static token
-[2022-08-29 13:28:25] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: e0b13fe3e638fbece344216ea7a73c2c).
-[2022-08-29 13:29:50] [ERROR   ] discord.ext.commands.bot: Ignoring exception in command None
-discord.ext.commands.errors.CommandNotFound: Command ".bal" is not found
-[2022-08-29 13:30:21] [ERROR   ] discord.ext.commands.bot: Ignoring exception in command None
-discord.ext.commands.errors.CommandNotFound: Command "bal" is not found
+[2022-08-29 17:44:29] [INFO    ] discord.client: logging in using static token
+[2022-08-29 17:44:32] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 846f40ebdd47f6ca8504a26f24c288fc).
+[2022-08-29 17:44:44] [ERROR   ] discord.client: Ignoring exception in on_command_error
+Traceback (most recent call last):
+  File "C:\Users\Sathish\AppData\Local\Programs\Python\Python310\lib\site-packages\discord\client.py", line 409, in _run_event
+    await coro(*args, **kwargs)
+  File "D:\Discord Bot\Discord_Py_Healer\cogs\misc.py", line 56, in on_command_error
+    await ctx.message.delete()
+  File "C:\Users\Sathish\AppData\Local\Programs\Python\Python310\lib\site-packages\discord\message.py", line 806, in delete
+    await self._state.http.delete_message(self.channel.id, self.id)
+  File "C:\Users\Sathish\AppData\Local\Programs\Python\Python310\lib\site-packages\discord\http.py", line 740, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10008): Unknown Message
+[2022-08-29 17:45:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 846f40ebdd47f6ca8504a26f24c288fc.
