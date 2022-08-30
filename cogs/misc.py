@@ -52,34 +52,30 @@ class misc(commands.Cog):
             except:
                 pass
         if isinstance(error ,commands.MissingPermissions):
-            await ctx.send(embed = discord.Embed(description = "You do not have the required Permissions to Use this command.",color=ctx.author.colour),delete_after = 10,ephemeral=True)
+            await ctx.reply(embed = discord.Embed(description = "You do not have the required Permissions to Use this command.",color=ctx.author.colour),delete_after = 5,ephemeral=True)
             await ctx.message.delete() 
         elif isinstance(error,commands.errors.ChannelNotFound):
-            await ctx.send(embed = discord.Embed(title = "Channe not found!",description = "No such Text Channel exists\nPlease Type #channel_name to Mention a Channel",color = ctx.author.colour),ephemeral=True)
+            await ctx.reply(embed = discord.Embed(title = "Channe not found!",description = "No such Text Channel exists\nPlease Type #channel_name to Mention a Channel",color = ctx.author.colour),delete_after = 5,ephemeral=True)
         elif isinstance(error , commands.errors.MemberNotFound):
-            await ctx.send(embed = discord.Embed(description="Member not found!!",color=ctx.author.colour,delete_after = 10),ephemeral=True)
+            await ctx.reply(embed = discord.Embed(description="Member not found!!",color=ctx.author.colour),delete_after = 5,ephemeral=True)
             await ctx.message.delete()
         elif isinstance(error , commands.errors.CommandNotFound):
             pass
         elif isinstance(error, commands.CommandOnCooldown):
             msg = revert(error.retry_after)
             embed = discord.Embed(title = f"Cooldown", description = str(msg), color = ctx.author.colour)
-            embed.set_author(name = ctx.author.display_name, icon_url = ctx.author.avatar_url)
-            await ctx.reply(embed = embed ,delete_after = 10,ephemeral=True)
+            embed.set_author(name = ctx.author.display_name, icon_url = ctx.author.avatar.url)
+            await ctx.reply(embed = embed,delete_after = 5,ephemeral=True)
             await ctx.message.delete()
         else:
             raise error
 
-    @client.hybrid_command(name = "stats",description="Stats",with_app_command = True)
+    @client.hybrid_command(name = "stat",description="Stats",with_app_command = True)
     async def stats(self, ctx):
  
 
         serverCount = len(self.client.guilds)
         memberCount = len(set(self.client.get_all_members()))
-
-
-        # other stuff
-        currentTime = int(time.time())
 
         embed = discord.Embed(title=f'{self.client.user.name} - Stats ',
                               colour=ctx.author.colour,
@@ -91,7 +87,7 @@ class misc(commands.Cog):
                               f'🏘️ Servers: {serverCount:,}\n'
                               f'👥 Total members: {memberCount:,}')
 
-        await ctx.reply(embed=embed, mention_author=False)
+        await ctx.send(embed=embed, mention_author=False,ephemeral=True)
 
 async def setup(client):
     await client.add_cog(misc(client))
