@@ -113,17 +113,17 @@ class Select(discord.ui.Select):
         super().__init__(placeholder="Select an option",max_values=1,min_values=1,options=options)
     async def callback(self, interaction: discord.Interaction):
         if self.values[0] == "Moderation":
-            await interaction.response.edit_message(embed=embed2,ephemeral=True)
+            await interaction.response.edit_message(embed=embed2,view=SelectView())
         elif self.values[0] == "Fun":
-            await interaction.response.send_message(embed=embed3,ephemeral=True)
+            await interaction.response.edit_message(embed=embed3,view=SelectView())
         elif self.values[0] == "Economy":
-            await interaction.response.send_message(embed=embed4,ephemeral=True)
+            await interaction.response.edit_message(embed=embed4,view=SelectView())
         elif self.values[0] == "Utility":
-            await interaction.response.send_message(embed=embed7,ephemeral=True)
+            await interaction.response.edit_message(embed=embed7,view=SelectView())
         elif self.values[0] == "Actions":
-            await interaction.response.send_message(embed=embed11,ephemeral=True)
+            await interaction.response.edit_message(embed=embed11,view=SelectView())
         elif self.values[0] == "Support":
-            await interaction.response.send_message(embed=embed9,ephemeral=True)
+            await interaction.response.edit_message(embed=embed9,view=SelectView())
 
 class SelectView(discord.ui.View):
     def __init__(self, *, timeout = 180):

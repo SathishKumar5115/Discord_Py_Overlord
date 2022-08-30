@@ -85,7 +85,7 @@ class AFK(commands.Cog):
                 
                 await message.channel.send(content=message.author.mention, embed=embed)
                 embed2=discord.Embed(title='Mentions while AFK :', description=mentionz)
-                await message.author.send(embed=embed2)
+                await message.author.send(embed=embed2,delete_after=10)
 
                 
                 afk[f'{message.author.id}']['AFK'] = 'False'
