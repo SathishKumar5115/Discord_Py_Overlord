@@ -188,6 +188,8 @@ async def give(ctx,member:discord.Member,amount = None):
     
     await ctx.reply(f"You gave **Ⓥ** {amount} coins to {member}'s wallet!")
 
+
+
 async def setup(client):
     client.add_command(balance)
     client.add_command(give)

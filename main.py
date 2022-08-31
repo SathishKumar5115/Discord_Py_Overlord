@@ -56,7 +56,7 @@ async def on_message(msg):
                 prefixes = json.load(f)
             
             pre = prefixes[str(msg.guild.id)]
-        await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** for more info.")
+        await msg.channel.send(f"My prefix for this server is **`{pre}`**. Use **`{pre}help`** or **`/helpmenu`** for more info.")
         
     await client.process_commands(msg)
 
@@ -79,6 +79,16 @@ async def setprefix(ctx : commands.Context, prefix):
     json.dump(prefixes,f)
   embed = discord.Embed(title = " Prefix Changed ", description = f"**The prefix for this server was changed to {prefix}**",color = ctx.author.color)
   await ctx.reply(embed=embed)
+
+@client.hybrid_command(name = "allcommands",description="Check all commands",with_app_command = True)
+async def allcommands(ctx):
+    helptext = "```"
+    for command in client.commands:
+        helptext+=f"{command}\n"
+    helptext+="```"
+    await ctx.send(helptext)
+
+client.remove_command("help")
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 

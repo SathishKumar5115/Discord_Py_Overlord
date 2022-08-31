@@ -1,2 +1,3 @@
-[2022-08-30 21:30:31] [INFO    ] discord.client: logging in using static token
-[2022-08-30 21:30:34] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: b703a368932fb80f7efa3a1842811ccd).
+[2022-08-31 06:17:37] [INFO    ] discord.client: logging in using static token
+[2022-08-31 06:17:40] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: bfc4049c55bc26472d5558da91331705).
+[2022-08-31 06:29:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session bfc4049c55bc26472d5558da91331705.

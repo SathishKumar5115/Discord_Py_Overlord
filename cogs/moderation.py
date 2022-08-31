@@ -14,6 +14,7 @@ intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix = get_prefix, case_insensitive = True, intents=intents)
 
+
 class Moderation(commands.Cog):
 
     def __init__(self, client):
@@ -61,6 +62,7 @@ class Moderation(commands.Cog):
     @commands.has_permissions(ban_members=True)
     @commands.cooldown(1, 5, commands.BucketType.guild)
     async def unban(self, ctx, user: discord.User):
+      invite = await ctx.channel.create_invite()
       if user == None:
         embed = discord.Embed(f"{ctx.message.author}, Please enter a valid user!")
         await ctx.reply(embed=embed)
@@ -73,7 +75,7 @@ class Moderation(commands.Cog):
         embed2.set_footer(text=ctx.author.name,icon_url=ctx.author.avatar.url)
         #await ctx.message.add_reaction('<a:checked:873119975219539979>')
         await ctx.send(embed=embed2)
-        embed = discord.Embed(title="UnBanned", description=f"**You are Unbanned in: {ctx.guild.name}.**", colour=discord.Colour.blue(), timestamp=datetime.datetime.utcnow())
+        embed = discord.Embed(title="UnBanned", description=f"**You are Unbanned in: {ctx.guild.name}.**\n\n {invite}", colour=discord.Colour.blue(), timestamp=datetime.datetime.utcnow())
         embed.set_thumbnail(url = ctx.guild.icon.url)     
         await user.send(embed=embed)
         
