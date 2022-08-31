@@ -1,11 +1,11 @@
 import discord
 from discord.ext import commands
-from discord import app_commands
-from currencysys import money
 import json
 import os
 import asyncio
 import logging
+from dotenv import load_dotenv
+import os
 
 def get_prefix(client, message):
 
@@ -90,10 +90,12 @@ async def allcommands(ctx):
 
 client.remove_command("help")
 
+load_dotenv('.env')
+
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
 async def main():
         await load_extensions()
 
 asyncio.run(main())
-client.run("MTAxMjkwMzg4NTU1NzQ4NTYxOQ.GDcSCm.RANmxEPnwbSaRjusfrfaUnq8Ujd6JtpEq2oG-Q",log_handler=handler)
+client.run(os.getenv('BOT_TOKEN'),log_handler=handler)
