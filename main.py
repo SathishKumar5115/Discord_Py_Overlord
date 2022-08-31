@@ -95,6 +95,5 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 async def main():
         await load_extensions()
 
-TOKEN: ${{ secrets.TOKEN }}
 asyncio.run(main())
-client.run(TOKEN,log_handler=handler)
+client.run("MTAxMjkwMzg4NTU1NzQ4NTYxOQ.GDcSCm.RANmxEPnwbSaRjusfrfaUnq8Ujd6JtpEq2oG-Q",log_handler=handler)
