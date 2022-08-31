@@ -96,4 +96,4 @@ async def main():
         await load_extensions()
 
 asyncio.run(main())
-client.run('MTAxMjkwMzg4NTU1NzQ4NTYxOQ.Gs6odc.K6psB3Fjig7NXsPVBJkusvdRjH0-EmVE2OIQuY',log_handler=handler)
+client.run(secrets.TOKEN,log_handler=handler)
