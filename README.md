@@ -56,7 +56,7 @@ Before you can use Overlord, you'll need to make sure that you have the followin
 Open GitHub Desktop and sign in to your GitHub account.
 Click on "File" and select "Clone repository".
 In the "Clone a repository" dialog box, select "URL" and paste the following URL:
-[https://github.com/SathishKumar5115/Discord_Py_Overlord](https://github.com/SathishKumar5115/Discord_Py_Overlord)
+```https://github.com/SathishKumar5115/Discord_Py_Overlord```
 Choose a local path for the repository and click on "Clone".
 Click on the Open in VSCode option 
 Open a new terminal
